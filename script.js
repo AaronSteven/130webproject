@@ -21,3 +21,4 @@ function addTable() {
        }
     }
     myTableDiv.appendChild(table); // add the table that was created in the DOM 
+}
