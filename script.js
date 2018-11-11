@@ -1,5 +1,7 @@
+//All of the constants that reference an element in the HTML go here 
 const tableButton = document.getElementById("create");
 const theTimer = document.getElementById("timer");
+const gridButton = document.getElementById("changeGridColor");
 
 // need to do hover mouse let it glow
 // user can change color of table
@@ -51,7 +53,7 @@ function createTable() {
     
 }
 
-/********************************************This section is for the timer code***********************************************************/ 
+/********************************************This section is for the timer  code***********************************************************/ 
 
 
 //timer is the array that we use to do math on in order to update the clock on the game page. We access this array in the runTimer function 
@@ -87,5 +89,33 @@ function start(){
 }
 
 
-//Event listeners
+/****************************************This section is for functions that affect the look of the application************************/
+function gridColor() {
+    let color = prompt("Change the color! 'Y' for yellow. 'G' for green. 'R' for red. 'B' for Blue"); 
+    let table = document.getElementById("myDynamicTable").getElementsByTagName("td");
+    switch(color) {
+        case 'Y': 
+            for (cell in table) 
+                table[cell].style.backgroundColor = "yellow";
+            break;
+        case 'R': 
+            for (cell in table) 
+                table[cell].style.backgroundColor = "red";
+            break;
+        case 'B': 
+            for (cell in table) 
+                table[cell].style.backgroundColor = "blue";
+            break;
+        case 'G': 
+            for (cell in table) 
+                table[cell].style.backgroundColor = "green";
+            break;    
+        default: 
+            alert("Not an option");
+            break; 
+    }
+}
+
+/***************************************All of our eventListeners will go here***********************************************/
 tableButton.addEventListener("click",createTable, false); 
+gridButton.addEventListener("click", gridColor,false); 
