@@ -5,6 +5,52 @@
     <meta charset ="UTF-8"> 
     <title>Picross</title>
     <script type="text/javascript" src="script.js" async></script>
+    <style>
+        gameContainer {
+            width: 100%;
+            height: 80%; 
+            border: solid black 1px; 
+            position: relative; 
+        }
+        
+        #myDynamicTable {
+            position: absolute;
+            left:27%;
+            right: 50%;
+            width: 50%;
+            height:70%;
+            border: solid black 1px;
+            margin-top:.5em;
+            float:left; 
+           
+        }
+        
+        #createButton {
+            right: 10%;
+        }
+        
+        #rowIndicator {
+            position: absolute;
+            border: solid black 1px; 
+            width: 5%; 
+            height: 70%;
+            float:left; 
+            left:20%;
+            margin-top:2.5%;
+        }
+        
+        #columnIndicator {
+            position: relative;
+            border: solid black 1px;
+            width:50%;
+            left: 28%;
+        }
+        
+       .outerRowIndicator{
+            margin-left:2.5%;
+       } 
+        
+    </style>
 </head>
 <body>
 
@@ -12,14 +58,73 @@
 <div id="timer">00:00:00</div>
 
 <!--Button for changing the color of the table cells-->
+<button id="changeBlockColor">Block Color </button> 
 <button id="changeGridColor">Grid Color </button> 
 
+<!--The primary container for the whole of the gameboard --> 
+<div id="gameContainer">
+
+<div id = "columnIndicator">
+    Numbers
+    <table id="columnPicrossNumberTable"> 
+        <tr> 
+            <td id="col1"> 1 </td>
+            <td id="col2"> 2 </td>
+            <td id="col3"> 3 </td>
+            <td id="col4"> 4 </td>
+            <td id="col5"> 5 </td>
+            <td id="col6"> 6 </td>
+            <td id="col7"> 7 </td>
+            <td id="col8"> 8 </td>
+            <td id="col9"> 9 </td>
+            <td id="col10"> 10 </td>
+            <td id="col11"> 11 </td>
+            <td id="col12"> 12 </td>
+            <td id="col13"> 13 </td>
+        </tr>
+        <tr>
+            <td id="colInner1"> 1 </td>
+            <td id="colInner1"> 2 </td>
+            <td id="colInner1"> 3 </td>
+            <td id="colInner1"> 4 </td>
+            <td id="colInner1"> 5 </td>
+            <td id="colInner1"> 6 </td>
+            <td id="colInner1"> 7 </td>
+            <td id="colInner1"> 8 </td>
+            <td id="colInner1"> 9 </td>
+            <td id="colInner1"> 10 </td>
+            <td id="colInner1"> 11 </td>
+            <td id="colInner1"> 12 </td>
+            <td id="colInner1"> 13 </td>
+            
+        </tr>
+    </table>
+  </div> 
+
+
+<div id="rowIndicator">
+    <div id="outerRowIndicatorWrap">
+        <div class="outerRowIndicator">1</div>
+        <div class="outerRowIndicator">2</div>
+        <div class="outerRowIndicator">3</div>
+        <div class="outerRowIndicator">4</div>
+        <div class="outerRowIndicator">5</div>
+        <div class="outerRowIndicator">6</div>
+        <div class="outerRowIndicator">7</div>
+        <div class="outerRowIndicator"></div>
+        <div class="outerRowIndicator"></div>
+        <div class="outerRowIndicator"></div>
+        <div class="outerRowIndicator"></div>
+        <div class="outerRowIndicator"></div>
+        <div class="outerRowIndicator"></div>
+    </div>
+</div> 
 
 <div id="myDynamicTable">
-<button id="create" type="button"> Create Table </button>
+<div id="createButton"><button type="button" id="create"> Create Table </button></div>
 </div>
-
-
  
+</div>
+  
 </body>
 </html>
