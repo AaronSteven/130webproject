@@ -38,6 +38,7 @@ function addTable(colAndRowSize) {
                 tr.appendChild(td);
        }
     }
+    //Finishing touches for the table are put here
     myTableDiv.appendChild(table); // add the table that was created in the DOM
     table.setAttribute("style", "border-width: 3px");  
     table.setAttribute("style", "border-collapse: collapse");
@@ -46,7 +47,8 @@ function addTable(colAndRowSize) {
     setPicrossTableElementColumnTableWidth();
     setPicrossElementTableRowTableWidth(7);
     addTableOnClickListener();
-    createTablePicEmulatorArray(7); 
+    createTablePicEmulatorArray(7);
+    setPicrossNumbers(7); 
     
     
     } else { //we have a table cell of 13. We need 6 extra rows and columns to accommodate the max amount of single element insertions
@@ -94,23 +96,272 @@ function setPicrossTableElementColumnTableWidth() {
 
 
 function setPicrossElementTableRowTableWidth(tableSize) {
-    rowIndicators = document.getElementsByClassName("outerRowIndicator");
+    rowIndicators = document.getElementsByClassName("RowIndicator");
+    rowIndicators2 = document.getElementsByClassName("RowIndicator2");
+    rowIndicators3 = document.getElementsByClassName("RowIndicator3");
+    rowIndicators4 = document.getElementsByClassName("RowIndicator4");
+    rowIndicators5 = document.getElementsByClassName("RowIndicator5");
+    rowIndicators6 = document.getElementsByClassName("RowIndicator6");
+    rowIndicators7 = document.getElementsByClassName("RowIndicator7");
+    console.log(rowIndicators);
+      
+    //goal: Test that we can actually move everything and that we can use innerHTML to change the row values before filling out all 7 
+    
     
     //check for table size before setting the margin values b/c the heights of the tables for 7 and 13 are different 
     if(tableSize == 7) {
-        for(let i=0; i<7; i++) {
-            if(i == 0 || i == 7 || i == 14) {
-                rowIndicators[i].style.marginTop = "2px";
-            } else if(i == 1 || i == 8 || i == 15) {
-                rowIndicators[i].style.marginTop = "30px";
-            } else {
-                rowIndicators[i].style.marginTop = "40px";
+        for(let picrossRow=1; picrossRow < 8; picrossRow++) {    
+            switch(picrossRow) {
+                case 1:
+                    for(let i=0; i<7; i++) {
+                        if(i == 0) {
+                            rowIndicators[i].style.marginTop = "2px";
+                        }  
+                        else if(i == 1) {
+                            rowIndicators[i].style.marginTop = "30px";
+                        } 
+                        else {
+                            rowIndicators[i].style.marginTop = "40px";
+                        }
+                    }
+                    break; 
+                case 2: 
+                    for(let i=0; i<7; i++) {
+                        if(i == 0) {
+                            rowIndicators2[i].style.marginTop = "2px";
+                        }  
+                        else if(i == 1) {
+                            rowIndicators2[i].style.marginTop = "30px";
+                        } 
+                        else {
+                            rowIndicators2[i].style.marginTop = "40px";
+                        }
+                    }
+                    break; 
+                case 3: 
+                    for(let i=0; i<7; i++) {
+                        if(i == 0) {
+                            rowIndicators3[i].style.marginTop = "2px";
+                        }  
+                        else if(i == 1) {
+                            rowIndicators3[i].style.marginTop = "30px";
+                        } 
+                        else {
+                            rowIndicators3[i].style.marginTop = "40px";
+                        }
+                    }
+                    break; 
+                case 4:
+                    for(let i=0; i<7; i++) {
+                        if(i == 0) {
+                            rowIndicators4[i].style.marginTop = "2px";
+                        }  
+                        else if(i == 1) {
+                            rowIndicators4[i].style.marginTop = "30px";
+                        } 
+                        else {
+                            rowIndicators4[i].style.marginTop = "40px";
+                        }
+                    }
+                    break; 
+                case 5:
+                    for(let i=0; i<7; i++) {
+                        if(i == 0) {
+                            rowIndicators5[i].style.marginTop = "2px";
+                        }  
+                        else if(i == 1) {
+                            rowIndicators5[i].style.marginTop = "30px";
+                        } 
+                        else {
+                            rowIndicators5[i].style.marginTop = "40px";
+                        }
+                    }
+                    break; 
+                case 6:
+                    for(let i=0; i<7; i++) {
+                        if(i == 0) {
+                            rowIndicators6[i].style.marginTop = "2px";
+                        }  
+                        else if(i == 1) {
+                            rowIndicators6[i].style.marginTop = "30px";
+                        } 
+                        else {
+                            rowIndicators6[i].style.marginTop = "40px";
+                        }
+                    }
+                    break; 
+                case 7:
+                    for(let i=0; i<7; i++) {
+                        if(i == 0) {
+                            rowIndicators7[i].style.marginTop = "2px";
+                        }  
+                        else if(i == 1) {
+                            rowIndicators7[i].style.marginTop = "30px";
+                        } 
+                        else {
+                            rowIndicators7[i].style.marginTop = "40px";
+                        }
+                    }
+                    break; 
             }
         }
     } else { //table size is 13 
         
+    } 
+
+}
+
+function setPicrossNumbers(tableSize) {
+    //tracking by row
+    rowIndicator = document.getElementsByClassName("RowIndicator"); 
+    //rowIndicator[0].innerHTML = 5; 
+    rowIndicator2 = document.getElementsByClassName("RowIndicator2"); 
+    //console.log(rowIndicator2); 
+    rowIndicator3 = document.getElementsByClassName("RowIndicator3");
+    rowIndicator4 = document.getElementsByClassName("RowIndicator4");
+    rowIndicator5 = document.getElementsByClassName("RowIndicator5");
+    rowIndicator6 = document.getElementsByClassName("RowIndicator6");
+    rowIndicator7 = document.getElementsByClassName("RowIndicator7");
+    
+    //create arrays that repreent the individual picross row numbers row by row 
+    actualRow = [];
+    actualRow.push(rowIndicator[0]); actualRow.push(rowIndicator2[0]); actualRow.push(rowIndicator3[0]);actualRow.push(rowIndicator4[0]); actualRow.push(rowIndicator5[0]); actualRow.push(rowIndicator6[0]);actualRow.push(rowIndicator7[0]);
+     
+    
+    actualRow2 = []; 
+    actualRow2.push(rowIndicator[1]); actualRow2.push(rowIndicator2[1]); actualRow2.push(rowIndicator3[1]); actualRow2.push(rowIndicator4[1]); actualRow2.push(rowIndicator5[1]); actualRow2.push(rowIndicator6[1]); actualRow2.push(rowIndicator7[1]);
+    
+    actualRow3 = []; 
+    actualRow3.push(rowIndicator[2]); actualRow3.push(rowIndicator2[2]); actualRow3.push(rowIndicator3[2]); actualRow3.push(rowIndicator4[2]); actualRow3.push(rowIndicator5[2]); actualRow3.push(rowIndicator6[2]); actualRow3.push(rowIndicator7[2]);
+    
+    actualRow4 = []; 
+    actualRow4.push(rowIndicator[3]); actualRow4.push(rowIndicator2[3]); actualRow4.push(rowIndicator3[3]); actualRow4.push(rowIndicator4[3]);actualRow4.push(rowIndicator5[3]); actualRow4.push(rowIndicator6[3]); actualRow4.push(rowIndicator7[3]);
+    
+    actualRow5 = []; 
+    actualRow5.push(rowIndicator[4]); actualRow5.push(rowIndicator2[4]);actualRow5.push(rowIndicator3[4]); actualRow5.push(rowIndicator4[4]); actualRow5.push(rowIndicator5[4]); actualRow5.push(rowIndicator6[4]); actualRow5.push(rowIndicator7[4]);
+    
+    actualRow6 = []; 
+    actualRow6.push(rowIndicator[5]); actualRow6.push(rowIndicator2[5]); actualRow6.push(rowIndicator3[5]);actualRow6.push(rowIndicator4[5]);actualRow6.push(rowIndicator5[5]); actualRow6.push(rowIndicator6[5]); actualRow6.push(rowIndicator7[5]);
+
+    actualRow7 = []; 
+    actualRow7.push(rowIndicator[6]); actualRow7.push(rowIndicator2[6]); actualRow7.push(rowIndicator3[6]); actualRow7.push(rowIndicator4[6]); actualRow7.push(rowIndicator5[6]); actualRow7.push(rowIndicator6[6]); actualRow7.push(rowIndicator7[6]);
+    
+    //Now extract the rows (which are arrays) from the tableEmulatorArray
+    tableRow = tablePicEmulator[0]; 
+    tableRow2 = tablePicEmulator[1];
+    tableRow3 = tablePicEmulator[2];
+    tableRow4 = tablePicEmulator[3];
+    tableRow5 = tablePicEmulator[4];
+    tableRow6 = tablePicEmulator[5];
+    tableRow7 = tablePicEmulator[6];
+    
+    if(tableSize == 7) {
+    
+    //go through the rows one by one, setting the picross row numbers as we do
+    let picrossRowIterator = 0; 
+    let newInsert = true; 
+    let hitTracker = 0; 
+    for(let i=0; i < 7; i++) {
+       if( tableRow[i] == 'p') {
+           console.log("We have a hit in the row"); 
+           hitTracker++;
+           actualRow[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           newInsert = false; 
+       }  else if( tableRow[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
+           picrossRowIterator++; 
+           newInsert  = true; 
+           hitTracker = 0; 
+       }
+    } 
+    
+    //targeting second picross number row 
+    picrossRowIterator = 0; 
+    newInsert = true; 
+    hitTracker = 0; 
+    for(let i=0; i < 7; i++) {
+       if( tableRow2[i] == 'p') {
+           console.log("We have a hit in the row"); 
+           hitTracker++;
+           actualRow2[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           newInsert = false; 
+       }  else if( tableRow2[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
+           picrossRowIterator++; 
+           newInsert  = true; 
+           hitTracker = 0; 
+       }
     }
 
+    picrossRowIterator = 0; 
+    newInsert = true; 
+    hitTracker = 0; 
+    for(let i=0; i < 7; i++) {
+       if( tableRow3[i] == 'p') {
+           console.log("We have a hit in the row"); 
+           hitTracker++;
+           actualRow3[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           newInsert = false; 
+       }  else if( tableRow3[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
+           picrossRowIterator++; 
+           newInsert  = true; 
+           hitTracker = 0; 
+       }
+    }
+
+    picrossRowIterator = 0; 
+    newInsert = true; 
+    hitTracker = 0; 
+    for(let i=0; i < 7; i++) {
+       if( tableRow4[i] == 'p') {
+           console.log("We have a hit in the row"); 
+           hitTracker++;
+           actualRow4[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           newInsert = false; 
+       }  else if( tableRow4[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
+           picrossRowIterator++; 
+           newInsert  = true; 
+           hitTracker = 0; 
+       }
+    }
+
+    picrossRowIterator = 0; 
+    newInsert = true; 
+    hitTracker = 0; 
+    for(let i=0; i < 7; i++) {
+       if( tableRow5[i] == 'p') {
+           console.log("We have a hit in the row"); 
+           hitTracker++;
+           actualRow5[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           newInsert = false; 
+       }  else if( tableRow5[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
+           picrossRowIterator++; 
+           newInsert  = true; 
+           hitTracker = 0; 
+       }
+    }
+
+    picrossRowIterator = 0; 
+    newInsert = true; 
+    hitTracker = 0; 
+    for(let i=0; i < 7; i++) {
+       if( tableRow6[i] == 'p') {
+           console.log("We have a hit in the row"); 
+           hitTracker++;
+           actualRow6[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           newInsert = false; 
+       }  else if( tableRow6[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
+           picrossRowIterator++; 
+           newInsert  = true; 
+           hitTracker = 0; 
+       }
+    }    
+    
+    }
+     
+    //tracking by column 
+    
+    
+    
+    
 }
 
 function addTableOnClickListener() {
@@ -288,26 +539,49 @@ function createTablePicEmulatorArray(tableSize) {
     
     //Fill a multidimensional array with the value empty
     if(tableSize == 7) { 
-        let fillArray = ['e','e','e','e','e','e','e'];
         for(let i=0; i<tableSize; i++) {
-           tablePicEmulator.push(fillArray);
+            let row = fillTablePicEmulatorRow(tableSize);
+            tablePicEmulator.push(row); 
         }
     }
     
+    
+    
     if(tableSize == 13) {
-       let fillArray = ['e','e','e','e','e','e','e','e','e','e','e','e','e'];
         for(let i=0; i<tableSize; i++) {
-           tablePicEmulator.push(fillArray);
+          let row = fillTablePicEmulatorRow(tableSize); 
+          tablePicEmulator.push(row); 
         } 
     }
      
    console.log("Here is our table representation:");
-   console.log(tablePicEmulator);   
-   
+   console.log(tablePicEmulator);
 }
 
-function fillTablePicEmulatorArray(tableSize) {
-    
+//This function fills up a row of the tableEmulatorArray with a random amount of contgious, randomly sized blocks of 'p' that fit the array 
+function fillTablePicEmulatorRow(tableSize) {
+            let row = [];
+            if(tableSize == 7) {
+                 row = ['e','e','e','e','e','e','e'];
+            } else {
+                 row = ['e','e','e','e','e','e','e','e','e','e','e','e','e'];
+            }
+            
+            for(let j=0; j < tableSize; j++) {
+                console.log("Value of j at start of loop is: " + j);
+                //generate contigous block for inserting 'P' which indicates it is a pixel position 
+                let pixelBlock = (Math.random() * ((tableSize-j) - 0 + 1)) + 0;
+                pixelBlock = Math.floor(pixelBlock); 
+                console.log("The amount of space in the row is: " + (tableSize-j));
+                console.log("The size of the randomly generated number is: " + pixelBlock);
+                for(let fillPixels=0; fillPixels < pixelBlock; fillPixels++) {
+                    console.log("The value of j in the fill loop is: " + j); 
+                    row[j] = 'p';
+                    j++;
+                }
+                console.log("Value of j at the end of loop is: " + j);
+            }
+            return row; 
 }
    
 
@@ -320,6 +594,8 @@ haven't been we deduct. If wrong squares are clicked we mark red and deduct. Wil
 but i don';t care too much about that right now. 
 Can this scale to the bringing in a pixelized image? I believe that b/c we can mark the array to indicate the correct image 
 position, this approach will still work with the image pulling we are also required to do. 
+
+Current Plan: From the start make all the elements of the picross number rows and columns invisible, but have them retain their size. When they get their numbers, have them become visible again. SO for table size of 7, make the first 4 column and row indicator rows and columns visible b/c they are the only ones that can possibly have any values. Keep the last 3 that are required for a table size of 13 hidden. Doing this should retain the spacing the indicators currently have without extra css,  which is what we want.
 
 /*
 
