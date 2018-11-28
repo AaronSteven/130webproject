@@ -213,15 +213,14 @@ function setPicrossElementTableRowTableWidth(tableSize) {
 
 function setPicrossNumbers(tableSize) {
     //tracking by row
-    rowIndicator = document.getElementsByClassName("RowIndicator"); 
-    //rowIndicator[0].innerHTML = 5; 
+    rowIndicator = document.getElementsByClassName("RowIndicator");  
     rowIndicator2 = document.getElementsByClassName("RowIndicator2"); 
-    //console.log(rowIndicator2); 
     rowIndicator3 = document.getElementsByClassName("RowIndicator3");
     rowIndicator4 = document.getElementsByClassName("RowIndicator4");
     rowIndicator5 = document.getElementsByClassName("RowIndicator5");
     rowIndicator6 = document.getElementsByClassName("RowIndicator6");
     rowIndicator7 = document.getElementsByClassName("RowIndicator7");
+    
     
     //create arrays that repreent the individual picross row numbers row by row 
     actualRow = [];
@@ -257,6 +256,7 @@ function setPicrossNumbers(tableSize) {
     
     if(tableSize == 7) {
     
+    
     //go through the rows one by one, setting the picross row numbers as we do
     let picrossRowIterator = 0; 
     let newInsert = true; 
@@ -265,14 +265,15 @@ function setPicrossNumbers(tableSize) {
        if( tableRow[i] == 'p') {
            console.log("We have a hit in the row"); 
            hitTracker++;
-           actualRow[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           actualRow[picrossRowIterator].innerHTML = hitTracker.toString(10);
+           actualRow[picrossRowIterator].style.visibility = 'visible'; 
            newInsert = false; 
        }  else if( tableRow[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
            newInsert  = true; 
            hitTracker = 0; 
        }
-    } 
+    }
     
     //targeting second picross number row 
     picrossRowIterator = 0; 
@@ -283,6 +284,7 @@ function setPicrossNumbers(tableSize) {
            console.log("We have a hit in the row"); 
            hitTracker++;
            actualRow2[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           actualRow2[picrossRowIterator].style.visibility = 'visible';
            newInsert = false; 
        }  else if( tableRow2[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -298,7 +300,8 @@ function setPicrossNumbers(tableSize) {
        if( tableRow3[i] == 'p') {
            console.log("We have a hit in the row"); 
            hitTracker++;
-           actualRow3[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           actualRow3[picrossRowIterator].innerHTML = hitTracker.toString(10);
+           actualRow3[picrossRowIterator].style.visibility = 'visible';           
            newInsert = false; 
        }  else if( tableRow3[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -314,7 +317,8 @@ function setPicrossNumbers(tableSize) {
        if( tableRow4[i] == 'p') {
            console.log("We have a hit in the row"); 
            hitTracker++;
-           actualRow4[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           actualRow4[picrossRowIterator].innerHTML = hitTracker.toString(10);
+           actualRow4[picrossRowIterator].style.visibility = 'visible';
            newInsert = false; 
        }  else if( tableRow4[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -330,7 +334,8 @@ function setPicrossNumbers(tableSize) {
        if( tableRow5[i] == 'p') {
            console.log("We have a hit in the row"); 
            hitTracker++;
-           actualRow5[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           actualRow5[picrossRowIterator].innerHTML = hitTracker.toString(10);
+           actualRow5[picrossRowIterator].style.visibility = 'visible';           
            newInsert = false; 
        }  else if( tableRow5[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -346,23 +351,54 @@ function setPicrossNumbers(tableSize) {
        if( tableRow6[i] == 'p') {
            console.log("We have a hit in the row"); 
            hitTracker++;
-           actualRow6[picrossRowIterator].innerHTML = hitTracker.toString(10);  
+           actualRow6[picrossRowIterator].innerHTML = hitTracker.toString(10);
+           actualRow6[picrossRowIterator].style.visibility = 'visible';           
            newInsert = false; 
        }  else if( tableRow6[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
            newInsert  = true; 
            hitTracker = 0; 
        }
-    }    
-    
     }
+    
+  
      
     //tracking by column 
     
+    //make the table for the top picross number indicators a multidimensional array 
     
+    let colTable = document.getElementById("columnPicrossNumberTable");
+    let rowLength = 7;
+    let colLength = 7;
+    
+    //begin setting the numbers by following the same process as above
+    
+    newInsert = true; 
+    hitTracker = 0;
+    picrossColumnIterator = 6; //bc it is the max column length in a 7x7 table with a 0-6 indexing 
+    for(let i=0; i < rowLength; i++) {
+        hitTracker = 0;
+        picrossColumnIterator = 6;
+        for(let j=0; j < colLength; j++) {
+            if(tablePicEmulator[j][i] == 'p') {
+                hitTracker++; 
+                colTable.rows[picrossColumnIterator].cells[i].innerHTML = hitTracker;
+                colTable.rows[picrossColumnIterator].cells[i].style.visibility = 'visible';
+                newInsert = false; 
+                
+            } else if (tablePicEmulator[j][i] == 'e' && newInsert == false) {
+                newInsert = true; 
+                hitTracker = 0;
+                picrossColumnIterator--;
+            }            
+        }
+    }
+    
+    } //end if statement 
     
     
 }
+
 
 function addTableOnClickListener() {
     table = document.getElementById("myDynamicTable");
