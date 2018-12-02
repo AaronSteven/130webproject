@@ -344,9 +344,11 @@ function setPicrossNumbers(tableSize) {
        }
     }
 
+    
     picrossRowIterator = 0; 
     newInsert = true; 
     hitTracker = 0; 
+        
     for(let i=0; i < 7; i++) {
        if( tableRow6[i] == 'p') {
            console.log("We have a hit in the row"); 
@@ -360,27 +362,45 @@ function setPicrossNumbers(tableSize) {
            hitTracker = 0; 
        }
     }
+        
+    
+
+    picrossRowIterator = 0; 
+    newInsert = true; 
+    hitTracker = 0; 
+        
+    for(let i=0; i < 7; i++) {
+       if( tableRow7[i] == 'p') {
+           console.log("We have a hit in the row"); 
+           hitTracker++;
+           actualRow7[picrossRowIterator].innerHTML = hitTracker.toString(10);
+           actualRow7[picrossRowIterator].style.visibility = 'visible';           
+           newInsert = false; 
+       }  else if( tableRow7[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
+           picrossRowIterator++; 
+           newInsert  = true; 
+           hitTracker = 0; 
+       }
+    }
     
   
      
     //tracking by column 
-    
-    //make the table for the top picross number indicators a multidimensional array 
     
     let colTable = document.getElementById("columnPicrossNumberTable");
     let rowLength = 7;
     let colLength = 7;
     
     //begin setting the numbers by following the same process as above
-    
     newInsert = true; 
     hitTracker = 0;
     picrossColumnIterator = 6; //bc it is the max column length in a 7x7 table with a 0-6 indexing 
     for(let i=0; i < rowLength; i++) {
         hitTracker = 0;
         picrossColumnIterator = 6;
+        newInsert = true 
         for(let j=0; j < colLength; j++) {
-            if(tablePicEmulator[j][i] == 'p') {
+            if(tablePicEmulator[j][i] == 'p') { //traverse down the columns of the 2d array 
                 hitTracker++; 
                 colTable.rows[picrossColumnIterator].cells[i].innerHTML = hitTracker;
                 colTable.rows[picrossColumnIterator].cells[i].style.visibility = 'visible';
@@ -394,7 +414,7 @@ function setPicrossNumbers(tableSize) {
         }
     }
     
-    } //end if statement 
+  } //end if statement 
     
     
 }
