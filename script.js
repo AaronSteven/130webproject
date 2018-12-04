@@ -3,9 +3,11 @@ const tableButton = document.getElementById("create");
 const theTimer = document.getElementById("timer");
 const blockButton = document.getElementById("changeBlockColor");
 const gridButton = document.getElementById("changeGridColor");
+const gradeButton = document.getElementById("getScore"); 
 
 //a list of global variables to assist some functions
 var blockColor = "blue";
+var tablePicEmulator = [];
 
 // need to do hover mouse let it glow
 // user can change color of table
@@ -425,14 +427,15 @@ function addTableOnClickListener() {
     cells = table.getElementsByTagName("TD");
     
     for(let i=0; i < cells.length; i++) {
-        cells[i].addEventListener("click", function() { 
+        cells[i].addEventListener("click", cells[i].fn= function() {
+        
         if(cells[i].style.backgroundColor == "black") {
             cells[i].style.backgroundColor = blockColor; 
           } else {
              cells[i].style.backgroundColor = "black"; 
           }
             
-        });
+        }, false);
     }
     
 }
@@ -500,7 +503,8 @@ function start(){
 //change the color of the table cells
 function setBlockColor() {
     let color = prompt("Change the color! 'Y' for yellow. 'G' for green. 'R' for red. 'B' for Blue"); 
-    let tableData = document.getElementById("myDynamicTable").getElementsByTagName("td");
+    let tableData = document.getElementById("myDynamicTable").getElementsByTagName("td");  
+    console.log(tableData);
     switch(color) {
         case 'Y': 
             for (let i=0; i <tableData.length; i++) {
@@ -584,13 +588,13 @@ function createRandomLevel() {
 /***************************************All of our eventListeners will go here***********************************************/
 tableButton.addEventListener("click",createTable, false); 
 blockButton.addEventListener("click", setBlockColor,false); 
-gridButton.addEventListener("click", gridColor, false); 
-
+gridButton.addEventListener("click", gridColor, false);
+gradeButton.addEventListener("click", scoreTheLevel, false); 
 
 
 /*****************************************Workspace-For Code That is in Progress and not assigned to a specific comment block*************/
 
-var tablePicEmulator = [];
+
 function createTablePicEmulatorArray(tableSize) {
     
     //Fill a multidimensional array with the value empty
@@ -638,21 +642,156 @@ function fillTablePicEmulatorRow(tableSize) {
                 console.log("Value of j at the end of loop is: " + j);
             }
             return row; 
+} 
+
+//Score =  max((number of non-space elements - number of errors),0)/ number of non-space elements.
+//Non-space element is any table cell that does have a pixel that contributes to the whole image 
+//an error is any pixel cell that isn't clicked, and every non-pixel cell that is clicked 
+function scoreTheLevel(){
+    let tableSize = 0; 
+    let nonSpaceElements = 0;
+    let numberOfErrors = 0;
+    let score = 0;
+    let tableData = document.getElementById("myDynamicTable").getElementsByTagName("td");
+    if (tableData.length == 49) {
+        tableSize = 7; 
+    } else{
+        tableSize = 13; 
+    }
+    
+    
+    if (tableSize == 7) {
+        
+        let tableRow1 = []; 
+        let tableRow2 = [];
+        let tableRow3 = [];
+        let tableRow4 = [];
+        let tableRow5 = [];
+        let tableRow6 = [];
+        let tableRow7 = [];
+
+        
+        for (let i=0; i<7; i++)
+                tableRow1.push(tableData[i]);
+        
+        for (let i=7; i<14; i++)
+                tableRow2.push(tableData[i]);
+        
+        for (let i=14; i<21; i++)
+                tableRow3.push(tableData[i]);
+        
+        for (let i=21; i<28; i++)
+                tableRow4.push(tableData[i]);
+        
+        for (let i=28; i<35; i++)
+                tableRow5.push(tableData[i]);
+        
+        for (let i=35; i<42; i++)
+                tableRow6.push(tableData[i]);
+        
+        for (let i=42; i<49; i++)
+                tableRow7.push(tableData[i]);
+        
+        
+        //find the number of non-space elements
+        for(let i=0; i < tableSize; i++) {
+            for (let j=0; j < tableSize; j++) {
+                if(tablePicEmulator[i][j] == 'p')
+                    nonSpaceElements++; 
+            
+            }
+        }
+
+        //find the number of errors
+         for(let i=0; i < 1; i++) {
+            for (let j=0; j < tableSize; j++) {
+                if((tablePicEmulator[i][j] == 'p' && tableRow1[j].style.backgroundColor != 'black')  || (tablePicEmulator[i][j] == 'e' && tableRow1[j].style.backgroundColor == 'black')) {
+                    numberOfErrors++; 
+                } 
+                    
+            }
+        }
+        
+        for(let i=1; i < 2; i++) {
+            for (let j=0; j < tableSize; j++) {
+                if((tablePicEmulator[i][j] == 'p' && tableRow2[j].style.backgroundColor != 'black')  || (tablePicEmulator[i][j] == 'e' && tableRow2[j].style.backgroundColor == 'black')) {
+                    numberOfErrors++; 
+                } 
+                    
+            }
+        }
+        
+        for(let i=2; i < 3; i++) {
+            for (let j=0; j < tableSize; j++) {
+                if((tablePicEmulator[i][j] == 'p' && tableRow3[j].style.backgroundColor != 'black')  || (tablePicEmulator[i][j] == 'e' && tableRow3[j].style.backgroundColor == 'black')) {
+                    numberOfErrors++; 
+                } 
+                    
+            }
+        }
+        
+        for(let i=3; i < 4; i++) {
+            for (let j=0; j < tableSize; j++) {
+                if((tablePicEmulator[i][j] == 'p' && tableRow4[j].style.backgroundColor != 'black')  || (tablePicEmulator[i][j] == 'e' && tableRow4[j].style.backgroundColor == 'black')) {
+                    numberOfErrors++; 
+                } 
+                    
+            }
+        }
+        
+        for(let i=4; i < 5; i++) {
+            for (let j=0; j < tableSize; j++) {
+                if((tablePicEmulator[i][j] == 'p' && tableRow5[j].style.backgroundColor != 'black')  || (tablePicEmulator[i][j] == 'e' && tableRow5[j].style.backgroundColor == 'black')) {
+                    numberOfErrors++; 
+                } 
+                    
+            }
+        }
+        
+        for(let i=5; i < 6; i++) {
+            for (let j=0; j < tableSize; j++) {
+                if((tablePicEmulator[i][j] == 'p' && tableRow6[j].style.backgroundColor != 'black')  || (tablePicEmulator[i][j] == 'e' && tableRow6[j].style.backgroundColor == 'black')) {
+                    numberOfErrors++; 
+                } 
+                    
+            }
+        }
+        
+        for(let i=6; i < 7; i++) {
+            for (let j=0; j < tableSize; j++) {
+                if((tablePicEmulator[i][j] == 'p' && tableRow7[j].style.backgroundColor != 'black')  || (tablePicEmulator[i][j] == 'e' && tableRow7[j].style.backgroundColor == 'black')) {
+                    numberOfErrors++; 
+                } 
+                    
+            }
+        }
+        
+        score = Math.max((nonSpaceElements-numberOfErrors), 0);
+        score = score/nonSpaceElements;
+        
+
+
+    
+    
+    }
+    
+    
+    //make same for 13x13 table
+    
+    
+    //place score on the board somewhere, and lock the board and force the creation of a new level 
+    alert("Your score is: " + score); 
+    
+    //freeze the board so the score cannot be updated after the first attempt 
+    freezeTheBoard(); 
+    
 }
-   
 
-/*
-Ideas: Make a 2D array to simulate the table. Randomly assign a spot as empty, 'e', or image, 'i'. Then run through the table rows 
-and columns, and whenever a spot for the array is 'i' give it class labeled "picSquare". Then, after a player has "finished" 
-and they want to check their solution, they have to click "check puzzle." It will scan the table and look for the spots
-squares marked "picImage" to see if they have been clicked (indicated by being black). If they have been we add score? If they 
-haven't been we deduct. If wrong squares are clicked we mark red and deduct. Will want a way to undo the check eventually, 
-but i don';t care too much about that right now. 
-Can this scale to the bringing in a pixelized image? I believe that b/c we can mark the array to indicate the correct image 
-position, this approach will still work with the image pulling we are also required to do. 
-
-Current Plan: From the start make all the elements of the picross number rows and columns invisible, but have them retain their size. When they get their numbers, have them become visible again. SO for table size of 7, make the first 4 column and row indicator rows and columns visible b/c they are the only ones that can possibly have any values. Keep the last 3 that are required for a table size of 13 hidden. Doing this should retain the spacing the indicators currently have without extra css,  which is what we want.
-
-/*
-
-  */ 
+//called after user requests that they get their score from the board. This function locks their attempts to play any more on the game board. 
+function freezeTheBoard() {
+    table = document.getElementById("myDynamicTable");
+    cells = table.getElementsByTagName("TD");
+    for(let i=0; i < cells.length; i++) {
+        cells[i].removeEventListener("click", cells[i].fn, false); 
+    }
+}
