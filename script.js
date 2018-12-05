@@ -1,5 +1,6 @@
 //All of the constants that reference an element in the HTML go here 
-const tableButton = document.getElementById("create");
+const tableButton = document.getElementById("create"); //may not need anymore 
+const loadLevel = document.getElementById("newLevel"); 
 const theTimer = document.getElementById("timer");
 const blockButton = document.getElementById("changeBlockColor");
 const gridButton = document.getElementById("changeGridColor");
@@ -8,6 +9,9 @@ const gradeButton = document.getElementById("getScore");
 //a list of global variables to assist some functions
 var blockColor = "blue";
 var tablePicEmulator = [];
+var timerInterval; 
+var newLevel = true;
+
 
 // need to do hover mouse let it glow
 // user can change color of table
@@ -444,6 +448,7 @@ function addTableOnClickListener() {
 
 
 function createTable() {
+    if(newLevel == true) {
     //Get input to decide if we are going to build a 7x7 table or 13x13
     let getRequest = true; 
     let answer = "";
@@ -459,6 +464,10 @@ function createTable() {
     addTable(answer);
     //temporary 
     start();
+    newLevel = false; 
+    } else {
+        reset(); 
+    }
     
 }
 
@@ -497,6 +506,17 @@ function start(){
     timerInterval = setInterval(runTimer, 10);
 }
 
+//This function will be used to start a new level on the board by clearing the current board and picross rows
+function reset() {
+    //first, get rid of the table 
+    let table  = document.getElementById("myDynamicTable");
+    table.removeChild(table.lastChild); 
+    
+    //second, allow the user to select a new table size 
+    
+    //third, reset the newLevel flag, and call start to make the new table
+    newLevel = true; 
+}
 
 /****************************************This section is for functions that affect the look of the application************************/
 
@@ -586,7 +606,8 @@ function createRandomLevel() {
 
 
 /***************************************All of our eventListeners will go here***********************************************/
-tableButton.addEventListener("click",createTable, false); 
+//tableButton.addEventListener("click",createTable, false);
+loadLevel.addEventListener("click",createTable, false);  
 blockButton.addEventListener("click", setBlockColor,false); 
 gridButton.addEventListener("click", gridColor, false);
 gradeButton.addEventListener("click", scoreTheLevel, false); 
@@ -769,6 +790,8 @@ function scoreTheLevel(){
         score = Math.max((nonSpaceElements-numberOfErrors), 0);
         score = score/nonSpaceElements;
         
+        //stop the timer on the board 
+        clearInterval(timerInterval); 
 
 
     
