@@ -28,12 +28,22 @@ li a {
 li a:hover {
     background-color: #111;
 }
+li a.active {
+    background-color: #e0e0eb;
+    color: black;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+	}
 </style>
 
 <body>
 <ul>
-  <li><a class="active" href="MainPage.html">Main Page</a></li>
-  <li><a href="CreateUserPage.html">Create a User Account</a></li>
+
+  <li><a href="MainPage.html">Main Page</a></li>
+  <li><a  class="active"  href="CreateUserPage.html">Create a User Account</a></li>
  <!-- <li><a href="#HighScores">High Scores</a></li> -->
   <li><a href="HowtoPlay.html">How to Play</a></li>
   <li><a href="index.html">Play the Game</a></li>

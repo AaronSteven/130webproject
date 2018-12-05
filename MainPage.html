@@ -29,10 +29,22 @@ li a:hover {
     background-color: #111;
 }
 
+li a.active {
+    background-color: #e0e0eb;
+    color: black;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+	}
+
 h1 {
     text-align: center;
+	font-family: Helvetica,Verdana, Arial, sans-serif;
 	font-size:200px;
 	color: white;
+	opacity: 0.75;
 }
 
 #snowflakeContainer {
@@ -55,6 +67,7 @@ h1 {
 }
 body {
     background-color: black;
+	
 }
 </style>
 <body>
@@ -73,7 +86,7 @@ body {
 </ul>
 
 
-<h1>Let's Play Picross</h1>
+<h1>Lets Play Picross</h1>
 <!--   Make background nature-->
 <!--  snowy theme for about us -->
 
