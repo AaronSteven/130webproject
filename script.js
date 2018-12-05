@@ -512,9 +512,13 @@ function reset() {
     let table  = document.getElementById("myDynamicTable");
     table.removeChild(table.lastChild); 
     
-    //second, allow the user to select a new table size 
+    //second, ensure timer interval is cleared and reset the timer to 00:00:00
+    clearInterval(timerInterval); 
+    timer = [0,0,0,0]; 
     
-    //third, reset the newLevel flag, and call start to make the new table
+    //third, allow the user to select a new table size 
+    
+    //fourth, reset the newLevel flag, and call start to make the new table
     newLevel = true; 
 }
 
