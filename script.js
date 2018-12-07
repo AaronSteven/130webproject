@@ -5,13 +5,17 @@ const theTimer = document.getElementById("timer");
 const blockButton = document.getElementById("changeBlockColor");
 const gridButton = document.getElementById("changeGridColor");
 const gradeButton = document.getElementById("getScore"); 
+const suggestMoveButton = document.getElementById("suggestItem"); 
+const turnTrackerDiv = document.getElementById("numberOfTurns"); 
 
 //a list of global variables to assist some functions
 var blockColor = "blue";
 var tablePicEmulator = [];
 var timerInterval; 
 var newLevel = true;
-
+var elementTracker = 0; 
+var turnTracker = 0; 
+var frozenBoard = false; 
 
 // need to do hover mouse let it glow
 // user can change color of table
@@ -435,8 +439,12 @@ function addTableOnClickListener() {
         
         if(cells[i].style.backgroundColor == "black") {
             cells[i].style.backgroundColor = blockColor; 
+            turnTracker++;
+            turnTrackerDiv.innerHTML = "Turn: " + turnTracker; 
           } else {
              cells[i].style.backgroundColor = "black"; 
+             turnTracker++;
+             turnTrackerDiv.innerHTML = "Turn: " + turnTracker;
           }
             
         }, false);
@@ -462,9 +470,12 @@ function createTable() {
         }
     }
     addTable(answer);
+    //set the turn counter 
+    turnTrackerDiv.innerHTML = "Turn: " + turnTracker; 
     //temporary 
     start();
     newLevel = false; 
+    frozenBoard = false; 
     } else {
         reset(); 
     }
@@ -545,11 +556,11 @@ function reset() {
     
     //fourth, reset the newLevel flag, clear the old table representation, and call the new createTable method 
     tablePicEmulator = [] 
+    elementTracker = 0; 
     newLevel = true; 
     
     createTable(); 
 }
-
 /****************************************This section is for functions that affect the look of the application************************/
 
 //change the color of the table cells
@@ -590,6 +601,8 @@ function setBlockColor() {
             alert("Not an option");
             break; 
     }
+    
+     //console.log(tablePicEmulator); 
 }
 
 //change the color of table grid 
@@ -625,16 +638,13 @@ function gridColor() {
             alert("Not an option");
             break; 
     }    
+    
+   
 }
 
 
 /*************************************************************Code for Creating Levels*******************************************/ 
 
-//Goal of this function is to randomly fill the dynamic table we have created with elements to satisfy requirmement #9 
-function createRandomLevel() {
-    
-    
-}
 
 
 /***************************************All of our eventListeners will go here***********************************************/
@@ -643,9 +653,69 @@ loadLevel.addEventListener("click",createTable, false);
 blockButton.addEventListener("click", setBlockColor,false); 
 gridButton.addEventListener("click", gridColor, false);
 gradeButton.addEventListener("click", scoreTheLevel, false); 
-
+suggestMoveButton.addEventListener("click",suggestMove, false); 
 
 /*****************************************Workspace-For Code That is in Progress and not assigned to a specific comment block*************/
+
+//suggest either the best move or the worst move given a board arrangement 
+function suggestMove() {
+    if(frozenBoard == false) {
+        let response = prompt("Enter 1 for the best move. Enter 2 for the worst move");
+        let boardTable = document.getElementById("myDynamicTable").getElementsByTagName("td"); 
+        console.log(tablePicEmulator); 
+        let tablePicSize = tablePicEmulator.length; 
+        let oneDimensionalRep = [];
+        let randomIndex = 0; 
+      
+        let bestMovesIndex = []; //holds the index of moves that will grant players a point 
+        let worstMovesIndex = [];  //holds index of moves that 
+        
+        //create the one dimensional rep of the tablePiceEmulator array 
+        for(let i=0; i<tablePicSize; i++){
+            for(let j=0; j<tablePicSize; j++) {
+                    oneDimensionalRep.push(tablePicEmulator[i][j]);
+            }
+        }
+        
+        //console.log(oneDimensionalRep); 
+            
+        
+        //create the indexes of the best possible acitons and the worst possible actions 
+        for(let i=0; i<oneDimensionalRep.length; i++) {
+            if(oneDimensionalRep[i] == 'p' && boardTable[i].style.backgroundColor != "black" && boardTable[i].style.backgroundColor != "purple") {
+                bestMovesIndex.push(i);
+            } else if(oneDimensionalRep[i] == 'e' && boardTable[i].style.backgroundColor != "black" && boardTable[i].style.backgroundColor != "orange") {
+                worstMovesIndex.push(i); 
+            }
+        }        
+        
+        //console.log(bestMovesIndex.length); 
+        //console.log(worstMovesIndex.length); 
+        
+        //randomly select a good move 
+        if(response == '1') {
+            if(bestMovesIndex.length > 1) {
+                randomIndex = Math.floor(Math.random() * ((bestMovesIndex.length-1) - 0 + 1)); //get number within range of best moves
+                boardTable[bestMovesIndex[randomIndex]].style.backgroundColor = "purple";
+            } else {
+                alert("No more moves to suggest"); 
+            }
+                  
+        } else {
+            if(worstMovesIndex.length > 1){
+                randomIndex = Math.floor(Math.random() * ((worstMovesIndex.length-1)-0 + 1)); //get number within range of worst moves 
+                boardTable[worstMovesIndex[randomIndex]].style.backgroundColor = "orange";
+            } else {
+                alert("No more moves to suggest"); 
+            }               
+        }
+    
+    } else {
+        alert("The board is graded. Cannot suggest a move."); 
+    }
+    
+}
+
 
 
 function createTablePicEmulatorArray(tableSize) {
@@ -666,14 +736,14 @@ function createTablePicEmulatorArray(tableSize) {
           tablePicEmulator.push(row); 
         } 
     }
-     
-   console.log("Here is our table representation:");
-   console.log(tablePicEmulator);
+
 }
 
-//This function fills up a row of the tableEmulatorArray with a random amount of contgious, randomly sized blocks of 'p' that fit the array 
+//This function fills up a row of the tableEmulatorArray with a random amount of contgious, randomly sized blocks of 'p' that fit the array
+//It also lets the element indicator button know how many elements are on the board 
 function fillTablePicEmulatorRow(tableSize) {
             let row = [];
+            
             if(tableSize == 7) {
                  row = ['e','e','e','e','e','e','e'];
             } else {
@@ -681,20 +751,24 @@ function fillTablePicEmulatorRow(tableSize) {
             }
             
             for(let j=0; j < tableSize; j++) {
-                console.log("Value of j at start of loop is: " + j);
+                //console.log("Value of j at start of loop is: " + j);
                 //generate contigous block for inserting 'P' which indicates it is a pixel position 
                 let pixelBlock = (Math.random() * ((tableSize-j) - 0 + 1)) + 0;
-                pixelBlock = Math.floor(pixelBlock); 
-                console.log("The amount of space in the row is: " + (tableSize-j));
-                console.log("The size of the randomly generated number is: " + pixelBlock);
+                pixelBlock = Math.floor(pixelBlock);
+               
                 for(let fillPixels=0; fillPixels < pixelBlock; fillPixels++) {
-                    console.log("The value of j in the fill loop is: " + j); 
                     row[j] = 'p';
                     j++;
+                    elementTracker++; 
                 }
-                console.log("Value of j at the end of loop is: " + j);
+                //console.log("Value of j at the end of loop is: " + j);
             }
+            
+            indicateAmountOfElementsOnTheBoard(elementTracker); 
+            
             return row; 
+            
+            
 } 
 
 //Score =  max((number of non-space elements - number of errors),0)/ number of non-space elements.
@@ -834,8 +908,15 @@ function scoreTheLevel(){
     //make same for 13x13 table
     
     
+    
+    //detect if a win or a lose 
+    if(score == 1) {
+        alert("Congratulations, it took you " + theTimer.innerHTML + " to win the game with a perfect score of " + score ); 
+    } else {
+        alert("Not quite right, it took you " + theTimer.innerHTML + " to get a score of " + score); 
+    }
     //place score on the board somewhere, and lock the board and force the creation of a new level 
-    alert("Your score is: " + score); 
+    //alert("Your score is: " + score); 
     
     //freeze the board so the score cannot be updated after the first attempt 
     freezeTheBoard(); 
@@ -849,4 +930,13 @@ function freezeTheBoard() {
     for(let i=0; i < cells.length; i++) {
         cells[i].removeEventListener("click", cells[i].fn, false); 
     }
+    
+    frozenBoard = true; 
+    
+}
+//called to update the amount of elements that are on the board 
+function indicateAmountOfElementsOnTheBoard(elementsNumber) {
+    let targetDiv = document.getElementById("elementsOnGrid");
+    targetDiv.innerHTML = "Amount of elements: " + elementsNumber; 
+    
 }
