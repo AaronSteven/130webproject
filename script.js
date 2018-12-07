@@ -219,46 +219,46 @@ function setPicrossElementTableRowTableWidth(tableSize) {
 
 function setPicrossNumbers(tableSize) {
     //tracking by row
-    rowIndicator = document.getElementsByClassName("RowIndicator");  
-    rowIndicator2 = document.getElementsByClassName("RowIndicator2"); 
-    rowIndicator3 = document.getElementsByClassName("RowIndicator3");
-    rowIndicator4 = document.getElementsByClassName("RowIndicator4");
-    rowIndicator5 = document.getElementsByClassName("RowIndicator5");
-    rowIndicator6 = document.getElementsByClassName("RowIndicator6");
-    rowIndicator7 = document.getElementsByClassName("RowIndicator7");
+    let rowIndicator = document.getElementsByClassName("RowIndicator");  
+    let rowIndicator2 = document.getElementsByClassName("RowIndicator2"); 
+    let rowIndicator3 = document.getElementsByClassName("RowIndicator3");
+    let rowIndicator4 = document.getElementsByClassName("RowIndicator4");
+    let rowIndicator5 = document.getElementsByClassName("RowIndicator5");
+    let rowIndicator6 = document.getElementsByClassName("RowIndicator6");
+    let rowIndicator7 = document.getElementsByClassName("RowIndicator7");
     
     
     //create arrays that repreent the individual picross row numbers row by row 
-    actualRow = [];
+    let actualRow = [];
     actualRow.push(rowIndicator[0]); actualRow.push(rowIndicator2[0]); actualRow.push(rowIndicator3[0]);actualRow.push(rowIndicator4[0]); actualRow.push(rowIndicator5[0]); actualRow.push(rowIndicator6[0]);actualRow.push(rowIndicator7[0]);
      
     
-    actualRow2 = []; 
+    let actualRow2 = []; 
     actualRow2.push(rowIndicator[1]); actualRow2.push(rowIndicator2[1]); actualRow2.push(rowIndicator3[1]); actualRow2.push(rowIndicator4[1]); actualRow2.push(rowIndicator5[1]); actualRow2.push(rowIndicator6[1]); actualRow2.push(rowIndicator7[1]);
     
-    actualRow3 = []; 
+    let actualRow3 = []; 
     actualRow3.push(rowIndicator[2]); actualRow3.push(rowIndicator2[2]); actualRow3.push(rowIndicator3[2]); actualRow3.push(rowIndicator4[2]); actualRow3.push(rowIndicator5[2]); actualRow3.push(rowIndicator6[2]); actualRow3.push(rowIndicator7[2]);
     
-    actualRow4 = []; 
+    let actualRow4 = []; 
     actualRow4.push(rowIndicator[3]); actualRow4.push(rowIndicator2[3]); actualRow4.push(rowIndicator3[3]); actualRow4.push(rowIndicator4[3]);actualRow4.push(rowIndicator5[3]); actualRow4.push(rowIndicator6[3]); actualRow4.push(rowIndicator7[3]);
     
-    actualRow5 = []; 
+    let actualRow5 = []; 
     actualRow5.push(rowIndicator[4]); actualRow5.push(rowIndicator2[4]);actualRow5.push(rowIndicator3[4]); actualRow5.push(rowIndicator4[4]); actualRow5.push(rowIndicator5[4]); actualRow5.push(rowIndicator6[4]); actualRow5.push(rowIndicator7[4]);
     
-    actualRow6 = []; 
+    let actualRow6 = []; 
     actualRow6.push(rowIndicator[5]); actualRow6.push(rowIndicator2[5]); actualRow6.push(rowIndicator3[5]);actualRow6.push(rowIndicator4[5]);actualRow6.push(rowIndicator5[5]); actualRow6.push(rowIndicator6[5]); actualRow6.push(rowIndicator7[5]);
 
-    actualRow7 = []; 
+    let actualRow7 = []; 
     actualRow7.push(rowIndicator[6]); actualRow7.push(rowIndicator2[6]); actualRow7.push(rowIndicator3[6]); actualRow7.push(rowIndicator4[6]); actualRow7.push(rowIndicator5[6]); actualRow7.push(rowIndicator6[6]); actualRow7.push(rowIndicator7[6]);
     
     //Now extract the rows (which are arrays) from the tableEmulatorArray
-    tableRow = tablePicEmulator[0]; 
-    tableRow2 = tablePicEmulator[1];
-    tableRow3 = tablePicEmulator[2];
-    tableRow4 = tablePicEmulator[3];
-    tableRow5 = tablePicEmulator[4];
-    tableRow6 = tablePicEmulator[5];
-    tableRow7 = tablePicEmulator[6];
+    let tableRow = tablePicEmulator[0]; 
+    let tableRow2 = tablePicEmulator[1];
+    let tableRow3 = tablePicEmulator[2];
+    let tableRow4 = tablePicEmulator[3];
+    let tableRow5 = tablePicEmulator[4];
+    let tableRow6 = tablePicEmulator[5];
+    let tableRow7 = tablePicEmulator[6];
     
     if(tableSize == 7) {
     
@@ -512,14 +512,42 @@ function reset() {
     let table  = document.getElementById("myDynamicTable");
     table.removeChild(table.lastChild); 
     
-    //second, ensure timer interval is cleared and reset the timer to 00:00:00
+    //Second, clear the picross numbers from the page 
+    //left hand side first
+    let rowIndicators7 = document.getElementsByClassName("RowIndicator7");
+    let rowIndicators6 = document.getElementsByClassName("RowIndicator6");
+    let rowIndicators5 = document.getElementsByClassName("RowIndicator5");
+    let rowIndicators4 = document.getElementsByClassName("RowIndicator4");
+    let rowIndicators3 = document.getElementsByClassName("RowIndicator3");
+    let rowIndicators2 = document.getElementsByClassName("RowIndicator2");
+    let rowIndicators1 = document.getElementsByClassName("RowIndicator"); 
+   
+    
+    for(let i=0; i<rowIndicators.length; i++) {
+        rowIndicators1[i].style.visibility = 'hidden';
+        rowIndicators2[i].style.visibility = 'hidden';
+        rowIndicators3[i].style.visibility = 'hidden';
+        rowIndicators4[i].style.visibility = 'hidden';
+        rowIndicators5[i].style.visibility = 'hidden';
+        rowIndicators6[i].style.visibility = 'hidden';
+        rowIndicators7[i].style.visibility = 'hidden';
+    }
+    
+    let topTable = document.getElementById("columnPicrossNumberTable").getElementsByTagName("TD"); 
+    //right hand side next 
+    for(let i=0; i<topTable.length; i++) 
+        topTable[i].style.visibility = 'hidden'; 
+    
+    
+    //third, ensure timer interval is cleared and reset the timer to 00:00:00
     clearInterval(timerInterval); 
     timer = [0,0,0,0]; 
     
-    //third, allow the user to select a new table size 
-    
-    //fourth, reset the newLevel flag, and call start to make the new table
+    //fourth, reset the newLevel flag, clear the old table representation, and call the new createTable method 
+    tablePicEmulator = [] 
     newLevel = true; 
+    
+    createTable(); 
 }
 
 /****************************************This section is for functions that affect the look of the application************************/
