@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
-<title>Page Title</title>
-</head>
-<style>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <style>
 ul {
     list-style-type: none;
     margin: 0;
@@ -37,20 +37,33 @@ li a:hover:not(.active) {
     color: white;
 	}
 
-<body>
 
 </style>
-<ul>
-  <li><a href="MainPage.html">Main Page</a></li>
- <!-- <li><a href="#HighScores">High Scores</a></li> -->
-  <li><a href="HowtoPlay.html">How to Play</a></li>
-  <li><a href="index.html">Play the Game</a></li>
-    <li><a href="CreateUserPage.html">Create a User Account</a></li>
-  <li><a class="active"  href="AboutUs.html">About Us</a></li>
-</ul>
+</head>
 
 
-<h1>About Us</h1>
+<body>
+<header role="banner">
+    <nav role="navigation">
+        <ul>
+          <li><a href="MainPage.html">Main Page</a></li>
+         <!-- <li><a href="#HighScores">High Scores</a></li> -->
+          <li><a href="HowtoPlay.html">How to Play</a></li>
+          <li><a href="index.html">Play the Game</a></li>
+            <li><a href="CreateUserPage.html">Create a User Account</a></li>
+          <li><a class="active"  href="AboutUs.html">About Us</a></li>
+        </ul>
+    </nav>
+    
+    <h1>About Us</h1>
+</header>
+
+<main role="main">
+    <article role="article">
+        <p>Some content for here</p>
+    
+    </article>  
+</main>
 
 
 </body>

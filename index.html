@@ -10,7 +10,14 @@
             width: 100%;
             height: 80%; 
             border: solid black 1px; 
-            position: relative; 
+            position: relative;
+            
+        }
+        
+        #footer{
+            position: absolute; 
+            top:130%;
+            left:40%;
         }
         
         #myDynamicTable {
@@ -176,276 +183,287 @@ li a:hover:not(.active) {
     </style>
 	
 </head>
+    
 <body>
-<ul>
-  <li><a href="MainPage.html">Main Page</a></li>
- <!-- <li><a href="#HighScores">High Scores</a></li> -->
-  <li><a href="HowtoPlay.html">How to Play</a></li>
-  <li><a class="active"  href="index.html">Play the Game</a></li>
-    <li><a href="CreateUserPage.html">Create a User Account</a></li>jj
-  <li><a href="AboutUs.html">About Us</a></li>
-</ul>
+<header role="banner">
+    <nav role="navigation">
+        <ul>
+          <li><a href="MainPage.html">Main Page</a></li>
+         <!-- <li><a href="#HighScores">High Scores</a></li> -->
+          <li><a href="HowtoPlay.html">How to Play</a></li>
+          <li><a class="active"  href="index.html">Play the Game</a></li>
+            <li><a href="CreateUserPage.html">Create a User Account</a></li>jj
+          <li><a href="AboutUs.html">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main role="main">
+    <!-- The timer. The code in the script explains how it works --> 
+    <div id="timer">00:00:00</div>
+
+    <!--Button for changing the color of the table cells-->
+    <button id="changeBlockColor">Block Color </button> 
+    <button id="changeGridColor">Grid Color </button>
+    <button id="getScore">Score Level</button>
+    <button id="newLevel">New Level </button>
+    <button id="suggestItem">Suggest move</button> 
+    <div id="elementsOnGrid"> </div>
+    <div id="numberOfTurns"> </div> 
+
+    <!--The primary container for the whole of the gameboard --> 
+    <div id="gameContainer">
+
+    <div id = "columnIndicator">
+        <table id="columnPicrossNumberTable"> 
+            <tr> 
+                <td class="column7">1</td>
+                <td class="column7">2</td>
+                <td class="column7">3</td>
+                <td class="column7">4</td>
+                <td class="column7">5</td>
+                <td class="column7">6</td>
+                <td class="column7">7</td>
+                <td class="column7">8</td>
+                <td class="column7">9</td>
+                <td class="column7">10</td>
+                <td class="column7">11</td>
+                <td class="column7">12</td>
+                <td class="column7">13</td>
+            </tr>
+            <tr>
+                <td class="column6"> 1 </td>
+                <td class="column6"> 2 </td>
+                <td class="column6"> 3 </td>
+                <td class="column6"> 4 </td>
+                <td class="column6"> 5 </td>
+                <td class="column6"> 6 </td>
+                <td class="column6"> 7 </td>
+                <td class="column6">  </td>
+                <td class="column6">  </td>
+                <td class="column6">  </td>
+                <td class="column6">  </td>
+                <td class="column6">  </td>
+                <td class="column6">  </td>
+            </tr>
+
+            <tr>
+                <td class="column5"> 1 </td>
+                <td class="column5"> 2 </td>
+                <td class="column5"> 3 </td>
+                <td class="column5"> 4 </td>
+                <td class="column5"> 5 </td>
+                <td class="column5"> 6 </td>
+                <td class="column5"> 7 </td>
+                <td class="column5">  </td>
+                <td class="column5">  </td>
+                <td class="column5">  </td>
+                <td class="column5">  </td>
+                <td class="column5">  </td>
+                <td class="column5">  </td>
+
+            </tr>
+
+            <tr>
+                <td class="column4"> 1 </td>
+                <td class="column4"> 2 </td>
+                <td class="column4"> 3 </td>
+                <td class="column4"> 4 </td>
+                <td class="column4"> 5 </td>
+                <td class="column4"> 6 </td>
+                <td class="column4"> 7 </td>
+                <td class="column4">  </td>
+                <td class="column4">  </td>
+                <td class="column4">  </td>
+                <td class="column4">  </td>
+                <td class="column4">  </td>
+                <td class="column4">  </td>
+            </tr>
+
+            <tr>
+                <td class="column3"> 1 </td>
+                <td class="column3"> 2 </td>
+                <td class="column3"> 3 </td>
+                <td class="column3"> 4 </td>
+                <td class="column3"> 5 </td>
+                <td class="column3"> 6 </td>
+                <td class="column3"> 7 </td>
+                <td class="column3">  </td>
+                <td class="column3">  </td>
+                <td class="column3">  </td>
+                <td class="column3">  </td>
+                <td class="column3">  </td>
+                <td class="column3">  </td>
+            </tr>
+
+            <tr>
+                <td class="column2"> 1 </td>
+                <td class="column2"> 2 </td>
+                <td class="column2"> 3 </td>
+                <td class="column2"> 4 </td>
+                <td class="column2"> 5 </td>
+                <td class="column2"> 6 </td>
+                <td class="column2"> 7 </td>
+                <td class="column2">  </td>
+                <td class="column2">  </td>
+                <td class="column2">  </td>
+                <td class="column2">  </td>
+                <td class="column2">  </td>
+                <td class="column2">  </td>
+            </tr>
+
+            <tr>
+                <td class="column1"> 1 </td>
+                <td class="column1"> 2 </td>
+                <td class="column1"> 3 </td>
+                <td class="column1"> 4 </td>
+                <td class="column1"> 5 </td>
+                <td class="column1"> 6 </td>
+                <td class="column1"> 7 </td>
+                <td class="column1">  </td>
+                <td class="column1">  </td>
+                <td class="column1">  </td>
+                <td class="column1">  </td>
+                <td class="column1">  </td>
+                <td class="column1">  </td>
+            </tr>
+        </table>
+      </div> 
 
 
-<!-- The timer. The code in the script explains how it works --> 
-<div id="timer">00:00:00</div>
+    <div id="rowIndicator">
+        <div id="RowIndicator7Wrap">
+            <div class="RowIndicator7">1</div>
+            <div class="RowIndicator7">2</div>
+            <div class="RowIndicator7">3</div>
+            <div class="RowIndicator7">4</div>
+            <div class="RowIndicator7">5</div>
+            <div class="RowIndicator7">6</div>
+            <div class="RowIndicator7">7</div>
+            <div class="RowIndicator7">1</div>
+            <div class="RowIndicator7">1</div>
+            <div class="RowIndicator7">1</div>
+            <div class="RowIndicator7">1</div>
+            <div class="RowIndicator7">1</div>
+            <div class="RowIndicator7">1</div>
 
-<!--Button for changing the color of the table cells-->
-<button id="changeBlockColor">Block Color </button> 
-<button id="changeGridColor">Grid Color </button>
-<button id="getScore">Score Level</button>
-<button id="newLevel">New Level </button>
-<button id="suggestItem">Suggest move</button> 
-<div id="elementsOnGrid"> </div>
-<div id="numberOfTurns"> </div> 
+        </div>
 
-<!--The primary container for the whole of the gameboard --> 
-<div id="gameContainer">
+        <div id="RowIndicator6Wrap">
+            <div class="RowIndicator6">1</div>
+            <div class="RowIndicator6">2</div>
+            <div class="RowIndicator6">3</div>
+            <div class="RowIndicator6">4</div>
+            <div class="RowIndicator6">5</div>
+            <div class="RowIndicator6">6</div>
+            <div class="RowIndicator6">7</div>
+            <div class="RowIndicator6 ">1</div>
+            <div class="RowIndicator6 ">1</div>
+            <div class="RowIndicator6 ">1</div>
+            <div class="RowIndicator6 ">1</div>
+            <div class="RowIndicator6 ">1</div>
+            <div class="RowIndicator6 ">1</div>
 
-<div id = "columnIndicator">
-    <table id="columnPicrossNumberTable"> 
-        <tr> 
-            <td class="column7">1</td>
-            <td class="column7">2</td>
-            <td class="column7">3</td>
-            <td class="column7">4</td>
-            <td class="column7">5</td>
-            <td class="column7">6</td>
-            <td class="column7">7</td>
-            <td class="column7">8</td>
-            <td class="column7">9</td>
-            <td class="column7">10</td>
-            <td class="column7">11</td>
-            <td class="column7">12</td>
-            <td class="column7">13</td>
-        </tr>
-        <tr>
-            <td class="column6"> 1 </td>
-            <td class="column6"> 2 </td>
-            <td class="column6"> 3 </td>
-            <td class="column6"> 4 </td>
-            <td class="column6"> 5 </td>
-            <td class="column6"> 6 </td>
-            <td class="column6"> 7 </td>
-            <td class="column6">  </td>
-            <td class="column6">  </td>
-            <td class="column6">  </td>
-            <td class="column6">  </td>
-            <td class="column6">  </td>
-            <td class="column6">  </td>
-        </tr>
-        
-        <tr>
-            <td class="column5"> 1 </td>
-            <td class="column5"> 2 </td>
-            <td class="column5"> 3 </td>
-            <td class="column5"> 4 </td>
-            <td class="column5"> 5 </td>
-            <td class="column5"> 6 </td>
-            <td class="column5"> 7 </td>
-            <td class="column5">  </td>
-            <td class="column5">  </td>
-            <td class="column5">  </td>
-            <td class="column5">  </td>
-            <td class="column5">  </td>
-            <td class="column5">  </td>
-            
-        </tr>
-        
-        <tr>
-            <td class="column4"> 1 </td>
-            <td class="column4"> 2 </td>
-            <td class="column4"> 3 </td>
-            <td class="column4"> 4 </td>
-            <td class="column4"> 5 </td>
-            <td class="column4"> 6 </td>
-            <td class="column4"> 7 </td>
-            <td class="column4">  </td>
-            <td class="column4">  </td>
-            <td class="column4">  </td>
-            <td class="column4">  </td>
-            <td class="column4">  </td>
-            <td class="column4">  </td>
-        </tr>
-        
-        <tr>
-            <td class="column3"> 1 </td>
-            <td class="column3"> 2 </td>
-            <td class="column3"> 3 </td>
-            <td class="column3"> 4 </td>
-            <td class="column3"> 5 </td>
-            <td class="column3"> 6 </td>
-            <td class="column3"> 7 </td>
-            <td class="column3">  </td>
-            <td class="column3">  </td>
-            <td class="column3">  </td>
-            <td class="column3">  </td>
-            <td class="column3">  </td>
-            <td class="column3">  </td>
-        </tr>
-        
-        <tr>
-            <td class="column2"> 1 </td>
-            <td class="column2"> 2 </td>
-            <td class="column2"> 3 </td>
-            <td class="column2"> 4 </td>
-            <td class="column2"> 5 </td>
-            <td class="column2"> 6 </td>
-            <td class="column2"> 7 </td>
-            <td class="column2">  </td>
-            <td class="column2">  </td>
-            <td class="column2">  </td>
-            <td class="column2">  </td>
-            <td class="column2">  </td>
-            <td class="column2">  </td>
-        </tr>
-        
-        <tr>
-            <td class="column1"> 1 </td>
-            <td class="column1"> 2 </td>
-            <td class="column1"> 3 </td>
-            <td class="column1"> 4 </td>
-            <td class="column1"> 5 </td>
-            <td class="column1"> 6 </td>
-            <td class="column1"> 7 </td>
-            <td class="column1">  </td>
-            <td class="column1">  </td>
-            <td class="column1">  </td>
-            <td class="column1">  </td>
-            <td class="column1">  </td>
-            <td class="column1">  </td>
-        </tr>
-    </table>
-  </div> 
+        </div>
+
+        <div id="RowIndicator5Wrap">
+            <div class="RowIndicator5">1</div>
+            <div class="RowIndicator5">2</div>
+            <div class="RowIndicator5">3</div>
+            <div class="RowIndicator5">4</div>
+            <div class="RowIndicator5">5</div>
+            <div class="RowIndicator5">6</div>
+            <div class="RowIndicator5">7</div>
+            <div class="RowIndicator5 ">1</div>
+            <div class="RowIndicator5 ">1</div>
+            <div class="RowIndicator5 ">1</div>
+            <div class="RowIndicator5 ">1</div>
+            <div class="RowIndicator5 ">1</div>
+            <div class="RowIndicator5 ">1</div>
+
+        </div>
+
+        <div id="RowIndicator4Wrap">
+            <div class="RowIndicator4">1</div>
+            <div class="RowIndicator4">2</div>
+            <div class="RowIndicator4">3</div>
+            <div class="RowIndicator4">4</div>
+            <div class="RowIndicator4">5</div>
+            <div class="RowIndicator4">6</div>
+            <div class="RowIndicator4">7</div>
+            <div class="RowIndicator4 ">1</div>
+            <div class="RowIndicator4 ">1</div>
+            <div class="RowIndicator4 ">1</div>
+            <div class="RowIndicator4 ">1</div>
+            <div class="RowIndicator4 ">1</div>
+            <div class="RowIndicator4 ">1</div>
+
+        </div>
+
+        <div id="RowIndicator3Wrap">
+            <div class="RowIndicator3">1</div>
+            <div class="RowIndicator3">2</div>
+            <div class="RowIndicator3">3</div>
+            <div class="RowIndicator3">4</div>
+            <div class="RowIndicator3">5</div>
+            <div class="RowIndicator3">6</div>
+            <div class="RowIndicator3">7</div>
+            <div class="RowIndicator3 ">1</div>
+            <div class="RowIndicator3 ">1</div>
+            <div class="RowIndicator3 ">1</div>
+            <div class="RowIndicator3 ">1</div>
+            <div class="RowIndicator3 ">1</div>
+            <div class="RowIndicator3 ">1</div>
+
+        </div>
+
+        <div id="RowIndicator2Wrap">
+            <div class="RowIndicator2">1</div>
+            <div class="RowIndicator2">2</div>
+            <div class="RowIndicator2">3</div>
+            <div class="RowIndicator2">4</div>
+            <div class="RowIndicator2">5</div>
+            <div class="RowIndicator2">6</div>
+            <div class="RowIndicator2">7</div>
+            <div class="RowIndicator2 ">1</div>
+            <div class="RowIndicator2 ">1</div>
+            <div class="RowIndicator2 ">1</div>
+            <div class="RowIndicator2 ">1</div>
+            <div class="RowIndicator2 ">1</div>
+            <div class="RowIndicator2 ">1</div>
+
+        </div>
+
+        <div id="RowIndicatorWrap">
+            <div class="RowIndicator">1</div>
+            <div class="RowIndicator">2</div>
+            <div class="RowIndicator">3</div>
+            <div class="RowIndicator">4</div>
+            <div class="RowIndicator">5</div>
+            <div class="RowIndicator">6</div>
+            <div class="RowIndicator">7</div>
+            <div class="RowIndicator ">8</div>
+            <div class="RowIndicator ">9</div>
+            <div class="RowIndicator ">1</div>
+            <div class="RowIndicator ">1</div>
+            <div class="RowIndicator ">1</div>
+            <div class="RowIndicator ">1</div>
+
+        </div>
+    </div> 
 
 
-<div id="rowIndicator">
-    <div id="RowIndicator7Wrap">
-        <div class="RowIndicator7">1</div>
-        <div class="RowIndicator7">2</div>
-        <div class="RowIndicator7">3</div>
-        <div class="RowIndicator7">4</div>
-        <div class="RowIndicator7">5</div>
-        <div class="RowIndicator7">6</div>
-        <div class="RowIndicator7">7</div>
-        <div class="RowIndicator7">1</div>
-        <div class="RowIndicator7">1</div>
-        <div class="RowIndicator7">1</div>
-        <div class="RowIndicator7">1</div>
-        <div class="RowIndicator7">1</div>
-        <div class="RowIndicator7">1</div>
-        
+    <div id="myDynamicTable">
+    <div id="createButton"><button type="button" id="create"> Create Table </button></div>
     </div>
-    
-    <div id="RowIndicator6Wrap">
-        <div class="RowIndicator6">1</div>
-        <div class="RowIndicator6">2</div>
-        <div class="RowIndicator6">3</div>
-        <div class="RowIndicator6">4</div>
-        <div class="RowIndicator6">5</div>
-        <div class="RowIndicator6">6</div>
-        <div class="RowIndicator6">7</div>
-        <div class="RowIndicator6 ">1</div>
-        <div class="RowIndicator6 ">1</div>
-        <div class="RowIndicator6 ">1</div>
-        <div class="RowIndicator6 ">1</div>
-        <div class="RowIndicator6 ">1</div>
-        <div class="RowIndicator6 ">1</div>
-        
-    </div>
-    
-    <div id="RowIndicator5Wrap">
-        <div class="RowIndicator5">1</div>
-        <div class="RowIndicator5">2</div>
-        <div class="RowIndicator5">3</div>
-        <div class="RowIndicator5">4</div>
-        <div class="RowIndicator5">5</div>
-        <div class="RowIndicator5">6</div>
-        <div class="RowIndicator5">7</div>
-        <div class="RowIndicator5 ">1</div>
-        <div class="RowIndicator5 ">1</div>
-        <div class="RowIndicator5 ">1</div>
-        <div class="RowIndicator5 ">1</div>
-        <div class="RowIndicator5 ">1</div>
-        <div class="RowIndicator5 ">1</div>
-        
-    </div>
-    
-    <div id="RowIndicator4Wrap">
-        <div class="RowIndicator4">1</div>
-        <div class="RowIndicator4">2</div>
-        <div class="RowIndicator4">3</div>
-        <div class="RowIndicator4">4</div>
-        <div class="RowIndicator4">5</div>
-        <div class="RowIndicator4">6</div>
-        <div class="RowIndicator4">7</div>
-        <div class="RowIndicator4 ">1</div>
-        <div class="RowIndicator4 ">1</div>
-        <div class="RowIndicator4 ">1</div>
-        <div class="RowIndicator4 ">1</div>
-        <div class="RowIndicator4 ">1</div>
-        <div class="RowIndicator4 ">1</div>
-        
-    </div>
-    
-    <div id="RowIndicator3Wrap">
-        <div class="RowIndicator3">1</div>
-        <div class="RowIndicator3">2</div>
-        <div class="RowIndicator3">3</div>
-        <div class="RowIndicator3">4</div>
-        <div class="RowIndicator3">5</div>
-        <div class="RowIndicator3">6</div>
-        <div class="RowIndicator3">7</div>
-        <div class="RowIndicator3 ">1</div>
-        <div class="RowIndicator3 ">1</div>
-        <div class="RowIndicator3 ">1</div>
-        <div class="RowIndicator3 ">1</div>
-        <div class="RowIndicator3 ">1</div>
-        <div class="RowIndicator3 ">1</div>
-        
-    </div>
-    
-    <div id="RowIndicator2Wrap">
-        <div class="RowIndicator2">1</div>
-        <div class="RowIndicator2">2</div>
-        <div class="RowIndicator2">3</div>
-        <div class="RowIndicator2">4</div>
-        <div class="RowIndicator2">5</div>
-        <div class="RowIndicator2">6</div>
-        <div class="RowIndicator2">7</div>
-        <div class="RowIndicator2 ">1</div>
-        <div class="RowIndicator2 ">1</div>
-        <div class="RowIndicator2 ">1</div>
-        <div class="RowIndicator2 ">1</div>
-        <div class="RowIndicator2 ">1</div>
-        <div class="RowIndicator2 ">1</div>
-        
-    </div>
-    
-    <div id="RowIndicatorWrap">
-        <div class="RowIndicator">1</div>
-        <div class="RowIndicator">2</div>
-        <div class="RowIndicator">3</div>
-        <div class="RowIndicator">4</div>
-        <div class="RowIndicator">5</div>
-        <div class="RowIndicator">6</div>
-        <div class="RowIndicator">7</div>
-        <div class="RowIndicator ">8</div>
-        <div class="RowIndicator ">9</div>
-        <div class="RowIndicator ">1</div>
-        <div class="RowIndicator ">1</div>
-        <div class="RowIndicator ">1</div>
-        <div class="RowIndicator ">1</div>
-        
-    </div>
-</div> 
 
-
-<div id="myDynamicTable">
-<div id="createButton"><button type="button" id="create"> Create Table </button></div>
-</div>
+    </div>
+</main>
  
+<div id="footer">
+    <footer role="contentinfo">
+       <p>Be sure to check out our next game, Project Piecrust, coming November 2019!</p> 
+    </footer>
 </div>
-  
 </body>
 </html>
