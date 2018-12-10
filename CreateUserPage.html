@@ -3,6 +3,7 @@
 
 <head>
     <meta charset ="UTF-8"> 
+    <Title>Create Profile</title> 
 </head>
 <style>
 ul {
@@ -40,44 +41,45 @@ li a:hover:not(.active) {
 </style>
 
 <body>
-<ul>
+<header role ="banner">
+    <nav role="navigation">   
+        <ul>
+          <li><a href="MainPage.html">Main Page</a></li>
+         <!-- <li><a href="#HighScores">High Scores</a></li> -->
+          <li><a href="HowtoPlay.html">How to Play</a></li>
+          <li><a href="index.html">Play the Game</a></li>
+          <li><a  class="active"  href="CreateUserPage.html">Create a User Account</a></li>
+          <li><a href="AboutUs.html">About Us</a></li>
+        </ul>
+    </nav>   
+</header>
 
-  <li><a href="MainPage.html">Main Page</a></li>
- <!-- <li><a href="#HighScores">High Scores</a></li> -->
-  <li><a href="HowtoPlay.html">How to Play</a></li>
-  <li><a href="index.html">Play the Game</a></li>
-  <li><a  class="active"  href="CreateUserPage.html">Create a User Account</a></li>
-  <li><a href="AboutUs.html">About Us</a></li>
-</ul>
+<main role="main>
+    <article role="article">
 
+        <form role="form" id= 'register' action = 'register.php' method='post' accept-charset='UTF-8'>
+            <fieldset>
+                <legend> Register </legend>
+                    <input type = 'hidden' name= 'submitted' id = 'submitted' value ='1' />
 
+                    <label for='first_name' >Your First Name*: </label>
+                    <input type='text' first_name='first_name' id='first_name' maxlength="50" />
 
+                    <label for='last_name' >Your Last Name*: </label>
+                    <input type='text' last_name='last_name' id='last_name' maxlength="50" />
 
-<form  id= 'register' action = 'register.php' method='post' accept-charset='UTF-8'>
-<fieldset>
-<legend> Register </legend>
-<input type = 'hidden' name= 'submitted' id = 'submitted' value ='1' />
+                    <label for='email' >Email Address*:</label>
+                    <input type='text' name='email' id='email' maxlength="50" />
 
-<label for='first_name' >Your First Name*: </label>
-<input type='text' first_name='first_name' id='first_name' maxlength="50" />
-
-<label for='last_name' >Your Last Name*: </label>
-<input type='text' last_name='last_name' id='last_name' maxlength="50" />
-
-<label for='email' >Email Address*:</label>
-<input type='text' name='email' id='email' maxlength="50" />
-
-<label for= 'username'>UserName*:</label>
-<input type='text' name ='username' id='username' max length="50"/>
-<input type='submit' name='Submit' value='Submit' />
-</fieldset>
-</form>
-
-<body>
-
-
+                    <label for= 'username'>UserName*:</label>
+                    <input type='text' name ='username' id='username' max length="50"/>
+                    <input type='submit' name='Submit' value='Submit' />
+            </fieldset>
+        </form>
+        
+    </article>
+</main>
 </body>
 
-</body>
 </html>
 
