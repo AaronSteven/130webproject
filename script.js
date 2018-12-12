@@ -9,7 +9,7 @@ const suggestMoveButton = document.getElementById("suggestItem");
 const turnTrackerDiv = document.getElementById("numberOfTurns"); 
 
 //a list of global variables to assist some functions
-var blockColor = "blue";
+var blockColor = "red";
 var tablePicEmulator = [];
 var timerInterval; 
 var newLevel = true;
@@ -43,7 +43,7 @@ function addTable(colAndRowSize) {
                 let td = document.createElement('TD');
                 td.width='50'; // you can set some elements related to the style directly through the DOM
                 td.height='50';
-                td.setAttribute("style", "background-color: blue");
+                td.setAttribute("style", "background-color: red");
                 td.appendChild(document.createTextNode(" "));
                 tr.appendChild(td);
        }
@@ -72,7 +72,7 @@ function addTable(colAndRowSize) {
                 let td = document.createElement('TD');
                 td.width='50'; // you can set some elements related to the style directly through the DOM
                 td.height='35';
-                td.setAttribute("style", "background-color: blue");
+                td.setAttribute("style", "background-color: red");
                 td.appendChild(document.createTextNode(" "));
                 tr.appendChild(td);
        }
@@ -99,7 +99,7 @@ function setPicrossTableElementColumnTableWidth() {
     
     for(let i=0; i < rowLength; i++) {
         for(let j=0; j <colLength; j++) {
-            colTable.rows[i].cells[j].style.width = '50px';
+            colTable.rows[i].cells[j].style.width = '10.5%';
         }
     }
 }
@@ -277,6 +277,7 @@ function setPicrossNumbers(tableSize) {
            hitTracker++;
            actualRow[picrossRowIterator].innerHTML = hitTracker.toString(10);
            actualRow[picrossRowIterator].style.visibility = 'visible'; 
+           actualRow[picrossRowIterator].style.color="white"; 
            newInsert = false; 
        }  else if( tableRow[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -295,6 +296,7 @@ function setPicrossNumbers(tableSize) {
            hitTracker++;
            actualRow2[picrossRowIterator].innerHTML = hitTracker.toString(10);  
            actualRow2[picrossRowIterator].style.visibility = 'visible';
+           actualRow2[picrossRowIterator].style.color="white"; 
            newInsert = false; 
        }  else if( tableRow2[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -311,7 +313,8 @@ function setPicrossNumbers(tableSize) {
            console.log("We have a hit in the row"); 
            hitTracker++;
            actualRow3[picrossRowIterator].innerHTML = hitTracker.toString(10);
-           actualRow3[picrossRowIterator].style.visibility = 'visible';           
+           actualRow3[picrossRowIterator].style.visibility = 'visible';   
+           actualRow3[picrossRowIterator].style.color="white";            
            newInsert = false; 
        }  else if( tableRow3[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -329,6 +332,7 @@ function setPicrossNumbers(tableSize) {
            hitTracker++;
            actualRow4[picrossRowIterator].innerHTML = hitTracker.toString(10);
            actualRow4[picrossRowIterator].style.visibility = 'visible';
+           actualRow4[picrossRowIterator].style.color="white";
            newInsert = false; 
        }  else if( tableRow4[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -345,7 +349,8 @@ function setPicrossNumbers(tableSize) {
            console.log("We have a hit in the row"); 
            hitTracker++;
            actualRow5[picrossRowIterator].innerHTML = hitTracker.toString(10);
-           actualRow5[picrossRowIterator].style.visibility = 'visible';           
+           actualRow5[picrossRowIterator].style.visibility = 'visible';
+           actualRow5[picrossRowIterator].style.color="white";           
            newInsert = false; 
        }  else if( tableRow5[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -364,7 +369,8 @@ function setPicrossNumbers(tableSize) {
            console.log("We have a hit in the row"); 
            hitTracker++;
            actualRow6[picrossRowIterator].innerHTML = hitTracker.toString(10);
-           actualRow6[picrossRowIterator].style.visibility = 'visible';           
+           actualRow6[picrossRowIterator].style.visibility = 'visible';
+           actualRow6[picrossRowIterator].style.color="white";
            newInsert = false; 
        }  else if( tableRow6[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -384,7 +390,8 @@ function setPicrossNumbers(tableSize) {
            console.log("We have a hit in the row"); 
            hitTracker++;
            actualRow7[picrossRowIterator].innerHTML = hitTracker.toString(10);
-           actualRow7[picrossRowIterator].style.visibility = 'visible';           
+           actualRow7[picrossRowIterator].style.visibility = 'visible';
+           actualRow7[picrossRowIterator].style.color="white";
            newInsert = false; 
        }  else if( tableRow7[i] == 'e' && newInsert == false) { //note to self, this area is a good candidate for any bugs that may crop up 
            picrossRowIterator++; 
@@ -414,6 +421,7 @@ function setPicrossNumbers(tableSize) {
                 hitTracker++; 
                 colTable.rows[picrossColumnIterator].cells[i].innerHTML = hitTracker;
                 colTable.rows[picrossColumnIterator].cells[i].style.visibility = 'visible';
+                colTable.rows[picrossColumnIterator].cells[i].style.color="white";
                 newInsert = false; 
                 
             } else if (tablePicEmulator[j][i] == 'e' && newInsert == false) {
@@ -660,7 +668,7 @@ suggestMoveButton.addEventListener("click",suggestMove, false);
 //suggest either the best move or the worst move given a board arrangement 
 function suggestMove() {
     if(frozenBoard == false) {
-        let response = prompt("Enter 1 for the best move. Enter 2 for the worst move");
+        let response = prompt("Enter 1 for the best move. Enter anything else for a bad move.");
         let boardTable = document.getElementById("myDynamicTable").getElementsByTagName("td"); 
         console.log(tablePicEmulator); 
         let tablePicSize = tablePicEmulator.length; 

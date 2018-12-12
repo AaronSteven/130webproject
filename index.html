@@ -5,13 +5,24 @@
     <meta charset ="UTF-8"> 
     <title>Picross</title>
     <script type="text/javascript" src="script.js" async></script>
+    
     <style>
+    
+        body {
+            background-color:black; 
+        }
+
         gameContainer {
             width: 100%;
             height: 80%; 
             border: solid black 1px; 
             position: relative;
             
+        }
+        
+        #decoration {
+            position: absolute; 
+            left: 54%;
         }
         
         #footer{
@@ -26,8 +37,8 @@
             position: absolute;
             left:27%;
             right: 50%;
-            width: 50%;
-            height:70%;
+            width: 60%;
+            height:68%;
             border: solid black 1px; 
             margin-top:.5em;
             float:left;
@@ -45,7 +56,6 @@
         
         #rowIndicator {
             position: absolute;
-            border: solid black 1px; 
             width: 7%; 
             height: 70%;
             float:left; 
@@ -55,7 +65,6 @@
         
         #columnIndicator {
             position: relative;
-            border: solid black 1px;
             width:50%;
             left: 28%;
         }
@@ -149,13 +158,14 @@
        .RowIndicator7 {
             visibility: hidden; 
        }
+       
       ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        }
 
 li {
     float: left;
@@ -181,12 +191,43 @@ li a:hover:not(.active) {
     background-color: #555;
     color: white;
 	}
+    
+    
+    
+#snowflakeContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.snowflake {
+    padding-left: 15px;
+    font-family: Cambria, Georgia, serif;
+    font-size: 14px;
+    line-height: 24px;
+    position: fixed;
+    color: #FFFFFF;
+    user-select: none;
+    z-index: 1000;
+}
+
+.snowflake:hover {
+    cursor: default;
+}
         
     </style>
 	
+
+    
 </head>
+
     
 <body>
+<script type='text/javascript' src='C:/Users/Aaron Marroquin/Desktop/2018_Classes/Fall/CSci_130/Project-Picross/fallingsnow_v6.js'> </script>
+<div id="snowflakeContainer">
+    <p class="snowflake">*</p>
+</div> 
+
 <header role="banner">
     <nav role="navigation">
         <ul>
@@ -456,11 +497,14 @@ li a:hover:not(.active) {
 
 
     <div id="myDynamicTable">
-    <div id="createButton"><button type="button" id="create"> Create Table </button></div>
+        <div id="createButton"><button type="button" id="create"> Create Table </button></div>
+        <div id="decoration"> <img src="christmasTree.png" > </div> 
     </div>
 
     </div>
 </main>
+
+
  
 <div id="footer">
     <footer role="contentinfo">
