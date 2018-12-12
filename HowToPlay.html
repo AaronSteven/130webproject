@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>How to Play</title>
+</head>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+li a.active {
+    background-color: #e0e0eb;
+    color: black;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+	}
+    
+footer  {
+    position: absolute; 
+    bottom: 100; 
+    width: 100%; 
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+	}
+    
+    
+.snowflake {
+    padding-left: 15px;
+    font-family: Cambria, Georgia, serif;
+    font-size: 14px;
+    line-height: 24px;
+    position: fixed;
+    color: #FFFFFF;
+    user-select: none;
+    z-index: 1000;
+}
+.snowflake:hover {
+    cursor: default;
+}
+body {
+    background-color: black;
+}
+
+h1 {
+    color:white; 
+}
+
+p {
+    color:white; 
+}
+
+h2 {
+    color:white;
+}
+
+</style>
+
+<body> 
+<header role="banner">
+    <nav role="navigation">
+        <ul>
+              <li><a href="MainPage.html">Main Page</a></li>
+             <!-- <li><a href="#HighScores">High Scores</a></li> -->
+              <li><a class="active" href="HowtoPlay.html">How to Play</a></li>
+              <li><a href="index.html">Play the Game</a></li>
+              <li><a href="CreateUserPage.html">Create a User Account</a></li>
+              <li><a href="AboutUs.html">About Us</a></li>
+        </ul>
+    </nav> 
+    <h1>How to Play Picross!</h1>
+    <p>In this page we will cover some of the history of Picross and some of the basics of playing it!</p>
+<header>
+
+<script type='text/javascript' src='C:/Users/Aaron Marroquin/Desktop/2018_Classes/Fall/CSci_130/Project-Picross/fallingsnow_v6.js' ></script>
+<div id="snowflakeContainer">
+    <p class="snowflake">*</p>
+</div>
+
+<main role="main">
+    <article role="article">
+        <section>
+            <h2> What is Picross?</h2>
+                <p> 
+                    Picross is a logic puzzle and a game. Basically, cells are placed on a grid and it is the job of the player to use the row and column numbers to deduce which cells they should click on, and which they should leave blank. It can be great fun if you don't have anything better to be doing. 
+                </p>
+        </section>
+        
+        <section>
+            <h2>When was Picross invented?</h2>
+                <p>The history is interesting. In 1987 a Japanese graphics editor named Non Ishida made grid pictures on city skyscrapers that formed when lights were turned on or off. At the same time, Picross was formed as a puzzle by Tetsuya Nishio, a Japanese puzzler. 
+                The puzzle began being published in Japanese puzzle magazines and then spread from there. We assume at the rate of at least the common cold. 
+                </p>
+        </section>
+        
+        <section>
+            <h2> How to Play Our Picross Game</h2>
+                <p>
+                    Our version of Picross is the same as any you have played, other than that you need to read the picorss number columns and rows
+                    from right to left for the rows, and bottom to top for the columns. You see, since it was originally a Japanese game, we thought this might be a fun twist and a good homage to the roots of the game if we did that to the rows. Then we figured we better flip the columns too. No half measures. 
+                </p>
+                
+                <p>So to start playing is simple. On our main game page, you need to click "New Level" and then select a size of the board with which you would wish to play on. Then after that you have finished with your clicking the cells on the table to blacken the squares you believe match up with the column and row numbers you hit the "Score Level" button. This will give you your score on the level. If you had a 100% then the you will be told so. Otherwise you will just have to start a new level and try for a better score. After every click of the score level button the game board will freeze, meaning you cannot select anymore scores. SO be sure before you score it that you are confident with your choices. </p>
+                
+                <p>There is also a suggest level feature that you can use while playing. It lets you get suggested a good move and even a bad move if you want that. This doesn't hurt your score on the random level mode, but in the coming arcade mode it will. 
+                </p> 
+        </section>
+    </article>
+</main>
+</body>
+
+<footer role="contentinfo">
+    <p>Be sure to follow us on.... to keep up with our activity. </p>
+</footer>
+</html>

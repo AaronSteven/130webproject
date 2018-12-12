@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+<head>
+    <meta charset ="UTF-8"> 
+    <Title>Create Profile</title> 
+</head>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+li a.active {
+    background-color: #e0e0eb;
+    color: black;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+	}
+    
+    
+.snowflake {
+    padding-left: 15px;
+    font-family: Cambria, Georgia, serif;
+    font-size: 14px;
+    line-height: 24px;
+    position: fixed;
+    color: #FFFFFF;
+    user-select: none;
+    z-index: 1000;
+}
+.snowflake:hover {
+    cursor: default;
+}
+body {
+    background-color: black;
+}
+
+p {
+    color:white; 
+}
+
+h1 {
+    color:white; 
+}
+
+h2 {
+    color:white; 
+}
+
+form {
+    color:white; 
+}
+</style>
+
+<body>
+<header role ="banner">
+    <nav role="navigation">   
+        <ul>
+          <li><a href="MainPage.html">Main Page</a></li>
+         <!-- <li><a href="#HighScores">High Scores</a></li> -->
+          <li><a href="HowtoPlay.html">How to Play</a></li>
+          <li><a href="index.html">Play the Game</a></li>
+          <li><a  class="active"  href="CreateUserPage.html">Create a User Account</a></li>
+          <li><a href="AboutUs.html">About Us</a></li>
+        </ul>
+    </nav>   
+</header>
+
+<script type='text/javascript' src='C:/Users/Aaron Marroquin/Desktop/2018_Classes/Fall/CSci_130/Project-Picross/fallingsnow_v6.js' ></script>
+<div id="snowflakeContainer">
+    <p class="snowflake">*</p>
+</div>
+
+<main role="main>
+    <article role="article">
+
+        <form role="form" id= 'register' action = 'register.php' method='post' accept-charset='UTF-8'>
+            <fieldset>
+                <legend> Register </legend>
+                    <input type = 'hidden' name= 'submitted' id = 'submitted' value ='1' />
+
+                    <label for='first_name' >Your First Name*: </label>
+                    <input type='text' first_name='first_name' id='first_name' maxlength="50" />
+
+                    <label for='last_name' >Your Last Name*: </label>
+                    <input type='text' last_name='last_name' id='last_name' maxlength="50" />
+
+                    <label for='email' >Email Address*:</label>
+                    <input type='text' name='email' id='email' maxlength="50" />
+
+                    <label for= 'username'>UserName*:</label>
+                    <input type='text' name ='username' id='username' max length="50"/>
+                    <input type='submit' name='Submit' value='Submit' />
+            </fieldset>
+        </form>
+        
+    </article>
+</main>
+</body>
+
+</html>
+

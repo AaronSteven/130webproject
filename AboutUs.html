@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+footer {
+    position: absolute;
+    bottom: 0; 
+    width: 100%; 
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+li a.active {
+    background-color: #e0e0eb;
+    color: black;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+	}
+    
+.snowflake {
+    padding-left: 15px;
+    font-family: Cambria, Georgia, serif;
+    font-size: 14px;
+    line-height: 24px;
+    position: fixed;
+    color: #FFFFFF;
+    user-select: none;
+    z-index: 1000;
+}
+.snowflake:hover {
+    cursor: default;
+}
+body {
+    background-color: black;
+}
+
+p {
+    color:white; 
+}
+
+h1 {
+    color:white; 
+}
+
+h2 {
+    color:white; 
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+
+<header role="banner">
+    <nav role="navigation">
+        <ul>
+          <li><a href="MainPage.html">Main Page</a></li>
+         <!-- <li><a href="#HighScores">High Scores</a></li> -->
+          <li><a href="HowtoPlay.html">How to Play</a></li>
+          <li><a href="index.html">Play the Game</a></li>
+            <li><a href="CreateUserPage.html">Create a User Account</a></li>
+          <li><a class="active"  href="AboutUs.html">About Us</a></li>
+        </ul>
+    </nav>
+    
+    <h1>About Us</h1>
+</header>
+
+<script type='text/javascript' src='C:/Users/Aaron Marroquin/Desktop/2018_Classes/Fall/CSci_130/Project-Picross/fallingsnow_v6.js' ></script>
+<div id="snowflakeContainer">
+    <p class="snowflake">*</p>
+</div>
+
+<main role="main">
+    <article role="article">
+        <section> 
+            <h2> Steven Ryan-Ramos Montoya de El Papi Chingon</h2>
+                <p>   </p> 
+        
+        </section>
+        
+        <section>
+            <h2> Aaron Marroquin</h2>
+                <p>I am 22 years old and study computer science at Fresno State. I am primarily interested in machine learning, techhnology with health applications, and web development. Outside of the the class room I'm the social chair for Fresno State's Computer Science Club, and the Head of PR for HackFresno. I am really into music so I earned a minor in it. I play three instruments. It's just fun.  </p>
+        
+        </section>
+        
+    </article>  
+</main>
+
+
+</body>
+
+<footer role="contentinfo"> 
+    <p>You can keep up with the authors by following them on social media at .....</p> 
+</footer>
+</html>
